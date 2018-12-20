@@ -1,0 +1,13 @@
+<style>
+  li:hover{
+    cursor:pointer;
+  }
+</style>
+
+<li class="list-group-item clearfix"
+    [routerLink]="[trainer.trainerId]" routerLinkActive="active"
+    (click)="onTrainerSelect(trainer.TrainerId)">{{ trainer.firstName }} &nbsp;{{ trainer.lastName }}
+
+  </li>
+
+

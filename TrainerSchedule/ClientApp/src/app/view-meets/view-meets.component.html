@@ -1,0 +1,16 @@
+<style>
+  div {
+    margin: 2em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  app-meet-list{
+    margin: 1em;
+  }
+</style>
+
+<div class="panel panel-default">
+    <app-meet-list *ngFor="let meet of meets" [meet]="meet"></app-meet-list>
+</div>
+<router-outlet></router-outlet>
+ 

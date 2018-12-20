@@ -1,0 +1,37 @@
+<style>
+  label {
+    font-size: 1.5em;
+    margin: 0.5em;
+  }
+
+  .container {
+    padding: 3em;
+  }
+
+  button {
+    margin: 1em;
+  }
+</style>
+
+<h3>New Client</h3>
+<form class="form-group container" #f="ngForm" (ngSubmit)="onClientSubmit(f)">
+  <label for="FirstName">First Name:</label>
+  <input class="form-control" type="text" id="FirstName" required
+         name="FirstName" #FirstName="ngModel" [ngModel]="client?.FirstName">
+
+  <label for="LastName">Last Name:</label>
+  <input class="form-control" type="text" id="LastName" required
+         name="LastName" #LastName="ngModel" [ngModel]="client?.LastName">
+
+  <label for="Email">Email:</label>
+  <input class="form-control" type="text" id="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+         name="email" #Email="ngModel" [ngModel]="client?.Email">
+
+  <label for="Phone">Phone Number:</label>
+  <input class="form-control" type="text" id="Phone" required
+         name="phone" #Phone="ngModel" [ngModel]="client?.Phone">
+
+  <button class="btn btn-success" type="submit" [disabled]="!f.valid">New Client</button>
+
+
+</form>

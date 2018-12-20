@@ -1,0 +1,49 @@
+<style>
+  label {
+    font-size:1.5em;
+    margin:0.5em;
+  }
+  .container{
+    padding:3em;
+  }
+  .example{
+    font-size:1em;
+    color:darkgray;
+  }
+  button{
+    margin: 1em;
+  }
+</style>
+
+
+
+<h3>Schedule a Meet</h3>
+<form class="form-group container" #m="ngForm" (ngSubmit)="onSubmit(m)">
+
+  <label for="Client">Client:</label>
+  <select class="form-control"  id="Client" required>
+    <option name="Client" #Client="ngModel" *ngFor="let client of clients" [value]="client.clientId" [ngModel]="meet?.Client">
+      <app-client-list  [client]="client" ></app-client-list>
+    </option>
+  </select>
+
+  <label for="DateAndTime">Date and Time:</label>
+  <input class="form-control" type="text" id="DateAndTime" required placeholder="12/19/2018 3:30 PM"
+         name="DateAndTime" #DateAndTime="ngModel" [ngModel]="meet?.DateAndTime">
+
+
+  <label for="Trainer">Trainers:</label>
+
+  <ul>
+    <!--<select class="form-control" id="Time" value="2:00" step="180" required>-->
+    <app-trainer-list *ngFor="let trainer of trainers" [trainer]="trainer" ></app-trainer-list>
+    <!-- </select> -->
+
+  </ul>
+  <label for="Notes">Notes:</label>
+  <input class="form-control" type="text" id="Notes" required
+         name="Notes" #Notes="ngModel" [ngModel]="meet?.Notes">
+
+  <button class="btn btn-success" type="submit" >Enter</button>
+   
+</form>
