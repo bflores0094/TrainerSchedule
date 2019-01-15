@@ -21,7 +21,7 @@ export class NewMeetComponent implements OnInit {
   trainers: Trainer[] = [];
   clients: Client[] = [];
   newMeet: Meet;
-  newClient: Client;
+  client: Client;
   subscription: Subscription;
   trainer: Trainer;
   trainerId: string;
@@ -38,12 +38,17 @@ export class NewMeetComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.newMeet = form.value;
-    this.trainer = this.getTrainerId();
-    console.log(this.trainer);
+    this.newMeet.Trainer = this.trainerService.getTrainer(this.newMeet.trainerID);
+    this.newMeet.Client = this.clientService.getClient(this.newMeet.clientID);
+
+   
+    //console.log(this.trainer);
+    //console.log(this.client);
+
 
     try {
-      //this.meetService.addMeet(this.newMeet);
-      console.log(this.newMeet);
+      this.meetService.storeMeets(this.newMeet);
+      //console.log(this.newMeet);
     } catch(error){
       console.log("Could not create meet");
       console.log(error);
@@ -52,15 +57,18 @@ export class NewMeetComponent implements OnInit {
     //this.router.navigate(["/meets"]);
   }
 
-  getTrainerId(): Trainer {
+  //getTrainerId(): Trainer {
  
-    this.route.params.subscribe(
-      (params) => {
-        this.trainer = this.trainerService.getTrainer(params.id);
+  //  this.route.params.subscribe(
+  //    (params: Params) => {
+  //      this.trainerId = params['id'];
+  //      console.log("TRAINER" + params['id']);
+  //      //this.trainer = this.trainerService.getTrainer(params.id);
 
-      })
-      return this.trainer;
-  }
+  //    })
+  //  //console.log(this.trainer);
+  //    return this.trainer;
+  //}
 
 
 

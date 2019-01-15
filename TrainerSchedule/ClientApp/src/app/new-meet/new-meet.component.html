@@ -21,9 +21,9 @@
 <form class="form-group container" #m="ngForm" (ngSubmit)="onSubmit(m)">
 
   <label for="Client">Client:</label>
-  <select class="form-control"  id="Client" required>
-    <option name="Client"  *ngFor="let client of clients" value="client" (click)="onClick(client)">
-      <app-client-list  [client]="client"></app-client-list>
+  <select class="form-control" id="client" name="clientID" [(ngModel)]="client" required>
+    <option name="Client" *ngFor="let client of clients" [value]="client.clientID" (click)="onClick(client)">
+      <app-client-list [client]="client"></app-client-list>
     </option>
   </select>
 
@@ -35,15 +35,19 @@
   <label for="Trainer">Trainers:</label>
 
 
-    <!--<select class="form-control" id="Time" value="2:00" step="180" required>-->
-    <app-trainer-list *ngFor="let trainer of trainers" [trainer]="trainer" ></app-trainer-list>
-    <!-- </select> -->
+  <!--<select class="form-control" id="Time" value="2:00" step="180" required>-->
+  <select class="form-control" id="trainer" name="trainerID" [(ngModel)]="trainer" required>
+    <option name="Trainer" *ngFor="let trainer of trainers" [value]="trainer.trainerID">
+      <app-trainer-list [trainer]="trainer"></app-trainer-list>
+      <!-- </select> -->
+    </option>
+  </select>
 
 
   <label for="Notes">Notes:</label>
   <input class="form-control" type="text" id="Notes" required
          name="Notes" #Notes="ngModel" [ngModel]="meet?.Notes">
 
-  <button class="btn btn-success" type="submit" >Enter</button>
-   
+  <button class="btn btn-success" type="submit">Enter</button>
+
 </form>

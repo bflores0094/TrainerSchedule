@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,8 @@ namespace TrainerSchedule.Controllers
         {
             _context = context;
         }
+
+
 
         // GET: api/Clients
         [HttpGet]
@@ -80,6 +83,8 @@ namespace TrainerSchedule.Controllers
 
             return NoContent();
         }
+
+
 
         // POST: api/Clients
         [HttpPost]

@@ -29,7 +29,7 @@ export class TrainerService {
   getTrainer(trainerId: string): Trainer {
 
     for (const trainer of this.trainers) {
-      if (trainer.trainerID === trainerId) {
+      if (trainer.trainerID == trainerId) {
         return trainer;
       }
     }

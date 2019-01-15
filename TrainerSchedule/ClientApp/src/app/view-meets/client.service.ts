@@ -30,9 +30,9 @@ export class ClientService {
 
     //console.log(clientId);
     for (var i = 0; i < this.clients.length; i++) {
-      //console.log(this.clients[i].clientID);
-      if (this.clients[i].clientID === clientId) {
-        console.log(this.clients[i]);
+     // console.log('CURRENT CLIENT' + this.clients[i].clientID);
+      if (this.clients[i].clientID == clientId) {
+       // console.log('CURRENT CLIENT' + this.clients[i]);
         return this.clients[i];
       }
     }
@@ -41,7 +41,7 @@ export class ClientService {
 
   storeClients(client: Client) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post('https://localhost:44317/api/clients', client,
+    this.http.post('https://localhost:56150/api/clients', client,
       { headers: headers })
       .subscribe(
       (response: Response) => {

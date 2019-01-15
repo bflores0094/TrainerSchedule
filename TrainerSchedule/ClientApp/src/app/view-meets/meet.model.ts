@@ -5,6 +5,8 @@ import { Client } from './client.model';
 @Injectable()
 export class Meet {
     meetID: string;
+    client: string;
+    trainer: string;
 
   constructor(public MeetId: string,
     public clientID: string,

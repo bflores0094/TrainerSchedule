@@ -23,7 +23,7 @@ export class TrainerListComponent implements OnInit {
           this.trainerId = params['id'];
           //console.log(this.trainerId);
           this.trainer = this.trainerService.getTrainer(this.trainerId);
-          //console.log(this.trainer);
+          console.log(this.trainer);
         }
       );
   }

@@ -44,13 +44,21 @@ export class MeetService {
     //return null;
   }
 
-  storeMeets(meets: Meet[]) {
+  storeMeets(meet: Meet) {
+    if (!meet) {
+      return;
+    }
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post('https://localhost:44317/api/meets', meets,
+    const strMeet = JSON.stringify(meet)
+
+    this.http.post('http://localhost:56150/api/Meets', strMeet,
       { headers: headers })
       .subscribe(
-        (response: Response) => {
-          this.meetListChangedEvent.next(meets.slice());
+      (response: Response) => {
+        if (response.status > 199 && response.status < 300) {
+          console.log("MEET HAS BEEN ADDED");
+        };
         }
       );
   }
@@ -78,7 +86,7 @@ export class MeetService {
     }
     this.meets.push(newMeet);
     // this.contactsClone = this.contacts.slice();
-    this.storeMeets(this.meets);
+   // this.storeMeets(this.meets);
   }
 
   constructor(private http: HttpClient) { }
