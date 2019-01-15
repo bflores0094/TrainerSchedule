@@ -32,23 +32,34 @@ export class NewMeetComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) { }
 
-  clientChange(clientId: Client) {
-    console.log(clientId);
+  onClick(value: string) {
+    console.log(value);
   }
 
   onSubmit(form: NgForm) {
     this.newMeet = form.value;
-    console.log(this.newMeet.ClientId);
+    this.trainer = this.getTrainerId();
+    console.log(this.trainer);
 
     try {
       //this.meetService.addMeet(this.newMeet);
-      console.log("Meet added");
+      console.log(this.newMeet);
     } catch(error){
       console.log("Could not create meet");
       console.log(error);
     }
     
     //this.router.navigate(["/meets"]);
+  }
+
+  getTrainerId(): Trainer {
+ 
+    this.route.params.subscribe(
+      (params) => {
+        this.trainer = this.trainerService.getTrainer(params.id);
+
+      })
+      return this.trainer;
   }
 
 

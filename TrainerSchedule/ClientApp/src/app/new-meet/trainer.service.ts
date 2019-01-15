@@ -12,7 +12,7 @@ export class TrainerService {
   trainerListChangedEvent = new Subject<Trainer[]>();
 
   getTrainers() {
-    this.http.get<Trainer[]>('https://localhost:44317/api/trainers')
+    this.http.get<Trainer[]>('http://localhost:56150/api/Trainers')
       .subscribe(
         (trainers: Trainer[]) => {
           this.trainers = trainers;

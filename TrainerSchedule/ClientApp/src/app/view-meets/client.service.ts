@@ -13,7 +13,7 @@ export class ClientService {
   clientListChangedEvent = new Subject<Client[]>();
 
   getClients() {
-    this.http.get<Client[]>('https://localhost:44317/api/clients')
+    this.http.get<Client[]>('http://localhost:56150/api/Clients')
       .subscribe(
         (clients: Client[]) => {
           this.clients = clients;

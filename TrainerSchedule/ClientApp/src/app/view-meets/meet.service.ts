@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 import { Meet } from './meet.model';
 import { Client } from './client.model';
-import { Response } from '_debugger';
+//import { Response } from '_debugger';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class MeetService {
   meetListChangedEvent = new Subject<Meet[]>();
 
   getMeets() {
-    this.http.get<Meet[]>('https://localhost:44317/api/meets')
+    this.http.get<Meet[]>('http://localhost:56150/api/Meets')
       .subscribe(
         (meets: Meet[]) => {
           this.meets = meets;

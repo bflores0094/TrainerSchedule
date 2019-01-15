@@ -4,10 +4,11 @@ import { Client } from './client.model';
 
 @Injectable()
 export class Meet {
+    meetID: string;
 
   constructor(public MeetId: string,
-    public ClientId: string,
-    public TrainerId: string,
+    public clientID: string,
+    public trainerID: string,
     public DateAndTime: string,
     public Trainer: Trainer,
     public Client: Client,

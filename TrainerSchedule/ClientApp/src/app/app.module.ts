@@ -38,9 +38,12 @@ import { MeetDetailComponent } from './view-meets/meet-detail/meet-detail.compon
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: NewMeetComponent, pathMatch: 'full' },
-      { path: 'new-meet', component: NewMeetComponent },
-      { path: 'new-meet:id', component: NewMeetComponent },
+      { path: '', component: NewClientComponent, pathMatch: 'full' },
+      {
+        path: 'new-meet', component: NewMeetComponent, children: [
+          { path: ':id/client', component: NewMeetComponent },
+          { path: ':id', component: NewMeetComponent }]
+      },
       {
         path: 'view-meets', component: ViewMeetsComponent, children: [
           { path: ':id', component: MeetDetailComponent },

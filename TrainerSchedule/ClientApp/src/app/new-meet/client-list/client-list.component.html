@@ -1,1 +1,6 @@
-{{ client.firstName }} {{ client.lastName }} <p>({{ client.email }})</p>
+<!--<a [routerLink]="[client.clientID/'client']" routerLinkActive="active"
+   (click)="onClientSelect(client.ClientId)"> -->
+<div (click)="onClientSelect(client)">
+  {{ client.firstName }} {{ client.lastName }} ( {{ client.email }} )
+</div>
+<!-- </a> -->

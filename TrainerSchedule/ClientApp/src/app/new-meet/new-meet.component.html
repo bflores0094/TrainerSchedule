@@ -22,8 +22,8 @@
 
   <label for="Client">Client:</label>
   <select class="form-control"  id="Client" required>
-    <option name="Client" #Client="ngModel" *ngFor="let client of clients" [value]="client.clientId" [ngModel]="meet?.Client">
-      <app-client-list  [client]="client" ></app-client-list>
+    <option name="Client"  *ngFor="let client of clients" value="client" (click)="onClick(client)">
+      <app-client-list  [client]="client"></app-client-list>
     </option>
   </select>
 
@@ -34,12 +34,12 @@
 
   <label for="Trainer">Trainers:</label>
 
-  <ul>
+
     <!--<select class="form-control" id="Time" value="2:00" step="180" required>-->
     <app-trainer-list *ngFor="let trainer of trainers" [trainer]="trainer" ></app-trainer-list>
     <!-- </select> -->
 
-  </ul>
+
   <label for="Notes">Notes:</label>
   <input class="form-control" type="text" id="Notes" required
          name="Notes" #Notes="ngModel" [ngModel]="meet?.Notes">

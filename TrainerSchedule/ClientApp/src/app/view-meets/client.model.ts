@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Client {
 
-  constructor(public ClientId: string,
+  constructor(public clientID: string,
     public FirstName: string,
     public LastName: string,
     public Email: string,
