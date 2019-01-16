@@ -41,12 +41,13 @@ export class ClientService {
 
   storeClients(client: Client) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post('https://localhost:56150/api/clients', client,
+    this.http.post('http://localhost:56150/api/clients', client,
       { headers: headers })
       .subscribe(
       (response: Response) => {
         //console.log(response);
         //client.ClientId = response.clientID;
+        console.log("CLIENT ADDED")
         this.clients.push(client);
           this.clientListChangedEvent.next(this.clients.slice());
         }

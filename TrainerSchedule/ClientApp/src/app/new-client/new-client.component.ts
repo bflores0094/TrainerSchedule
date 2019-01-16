@@ -20,7 +20,7 @@ export class NewClientComponent implements OnInit {
     console.log(this.newClient);
     try {
       this.clientService.addClient(this.newClient);
-      console.log("Client " + this.newClient.FirstName + " has been added")
+      //console.log("Client " + this.newClient.FirstName + " has been added")
     } catch (error) {
       console.log("Could not add client " + this.newClient.FirstName);
       console.log(error);

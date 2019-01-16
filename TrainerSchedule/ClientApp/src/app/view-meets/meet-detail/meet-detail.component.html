@@ -1,8 +1,32 @@
+<style>
+  .panel-heading{
+    padding:1.5em;
+  }
+  .btn-danger{
+    margin-right: 1.5em;
+  }
+  .row{
+    font-size: 1.5em;
+    margin-left: 1em;
+  }
+  h1{
+    font-size:3em;
+    margin-left: 6%;
+  }
+  .btn{
+    width: 10em;
+    height:3em;
+    font-size: 0.5em;
+    margin-top: -2.5em;
+  }
+
+</style>
+
 <div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
   <div class="panel-heading">
     <div class="row pad-all">
-      <h4 class="title margin-left-right">
-        {{ meet.Client.firstName }} {{ meet.Client.lastName }}</h4>
+      <h1 class="title margin-left-right">
+        {{ meet.Client.firstName }} {{ meet.Client.lastName }}</h1>
       <div class="row pull-right margin-left-right btn-toolbar">
         <a class="btn btn-info" [routerLink]="['edit']">Edit</a>
         <a class="btn btn-danger" (click)="onDelete()">Delete</a>
@@ -12,13 +36,17 @@
   <div class="panel-body">
     <div class="pad-left-right">
       <div class="row">
-        <label>Description:</label>
-        <span class="label-value">{{ meet.meetID }}</span>
-</div>
-      <br>
+        <label>Trainer:</label>
+        <span class="label-value"> {{ meet.Trainer.firstName }} {{ meet.Trainer.lastName }}</span>
+      </div>
+      
       <div class="row">
-        <label>URL:</label>
-        <span class="label-value">{{ document.url }}</span>
+        <label>Notes:</label>
+        <span class="label-value">&nbsp;{{ meet.notes }}</span>
+      </div>
+      <div class="row">
+        <label>Date:</label>
+        <span class="label-value">&nbsp;{{ meet.dateAndTime | date:'medium' }}</span>
       </div>
     </div>
   </div>

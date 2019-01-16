@@ -1,17 +1,23 @@
 <style>
-  div{
+  .pull-left{
     border-bottom: thin black solid;
     margin: 1em;
+    padding: 0.5em;
+    width: 100%;
+    font:bold;
+  }
+  .trainer{
+    margin:0.5em;
   }
 </style>
 <a href="#" class="list-group-item clearfix" [routerLink]="[meet.meetID]" routerLinkActive="active">
   <div class="pull-left">
     <h3 class="list-group-item-text"> {{ meet.Client.firstName }} {{ meet.Client.lastName }}</h3>
   </div>
-  <div>
+  <div class="trainer">
     Trainer: {{ meet.Trainer.firstName }} {{ meet.Trainer.lastName }}
   </div>
   <span class="pull-right">
-    {{ meet.dateAndTime }}
+    {{ meet.dateAndTime | date:'medium' }}
   </span>
 </a>

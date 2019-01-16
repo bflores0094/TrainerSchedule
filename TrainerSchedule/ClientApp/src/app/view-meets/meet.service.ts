@@ -16,7 +16,7 @@ export class MeetService {
   meetListChangedEvent = new Subject<Meet[]>();
 
   getMeets() {
-    this.http.get<Meet[]>('http://localhost:56150/api/Meets')
+    this.http.get<Meet[]>('http://localhost:56150/api/meets')
       .subscribe(
         (meets: Meet[]) => {
           this.meets = meets;
@@ -36,7 +36,7 @@ export class MeetService {
     //console.log("Get Meet function:" + meetId);
     for (var i = 0; i < this.meets.length; i++) {
       //console.log("array id" + this.meets[i].meetID);
-      if (this.meets[i].meetID === meetId) {
+      if (this.meets[i].meetID == meetId) {
         console.log("Selected meet:" + this.meets[i]);
         return this.meets[i];
       }
@@ -50,15 +50,16 @@ export class MeetService {
     }
     
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const strMeet = JSON.stringify(meet)
+ 
 
-    this.http.post('http://localhost:56150/api/Meets', strMeet,
+    this.http.post('http://localhost:56150/api/meets', meet,
       { headers: headers })
       .subscribe(
       (response: Response) => {
-        if (response.status > 199 && response.status < 300) {
-          console.log("MEET HAS BEEN ADDED");
-        };
+        console.log("MEET HAS BEEN ADDED");
+        //this.meets.push(meet);
+        //this.meetListChangedEvent.next(this.meets.slice())
+   
         }
       );
   }
@@ -69,7 +70,7 @@ export class MeetService {
       return;
     }
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.delete('https://localhost:44317/api/meets',
+    this.http.delete('http://localhost:56150/api/meets',
       { headers: headers })
       .subscribe(
       (response: Response) => {
