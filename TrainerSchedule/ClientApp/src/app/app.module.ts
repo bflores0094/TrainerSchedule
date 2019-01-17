@@ -16,6 +16,7 @@ import { MeetListComponent } from './view-meets/meet-list/meet-list.component';
 import { ClientListComponent } from './new-meet/client-list/client-list.component';
 import { NewClientComponent } from './new-client/new-client.component';
 import { MeetDetailComponent } from './view-meets/meet-detail/meet-detail.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MeetDetailComponent } from './view-meets/meet-detail/meet-detail.compon
           { path: ':id/edit', component: MeetDetailComponent }
         ]},
       { path: 'new-client', component: NewClientComponent }
-    ])
+    ]),
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

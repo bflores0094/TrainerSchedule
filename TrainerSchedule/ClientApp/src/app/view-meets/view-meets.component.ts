@@ -24,18 +24,14 @@ export class ViewMeetsComponent implements OnInit {
     this.meetService.getMeets();
     this.meetService.meetListChangedEvent.subscribe(
       (meets: Meet[]) => {
-        this.meets = meets;
+        this.meets = meets.sort((meet1, meet2) => {
+          return meet1.DateAndTime > meet2.DateAndTime ? 1: -1
+        });
 
         for (let m of this.meets) {
           m.Client = this.clientService.getClient(m.clientID);
-          //console.log(m);
-        }
-
-        for (let m of this.meets) {
-          console.log(m.trainerID);
           m.Trainer = this.trainerService.getTrainer(m.trainerID);
-         // console.log(m.Trainer);
-          //console.log(this.meets[i]);
+          //console.log(m);
         }
       })
 
